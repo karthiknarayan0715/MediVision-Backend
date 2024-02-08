@@ -10,8 +10,8 @@ const roomSchema = mongoose.Schema({
     connections: [String]
 })
 
-const Connection = mongoose.model('connections', connectionsSchema)
-const Room = mongoose.model('rooms', roomSchema)
+const Connection = mongoose.model('Connection', connectionsSchema)
+const Room = mongoose.model('Room', roomSchema)
 
 let Connections = {}
 

@@ -4,18 +4,16 @@ const mongoose = require("mongoose")
 const Connections = require("./models/Models").Connections;
 const {v4: uuidv4} = require("uuid")
 const url = require('url');
-const uri = "mongodb://localhost:27017/SIH_Dev"
+//HELPS US USE THE .env FILE IN OUR CODE
+dotenv.config()
 
 const EditName = require("./api/EditName.js").EditName
 const CreateRoom = require("./api/CreateRoom.js").CreateRoom
 
-mongoose.connect(uri).then(()=>{
+mongoose.connect(process.env.DB_URI).then(()=>{
     console.log("Connected to MongoDB!")
 });
 
-
-//HELPS US USE THE .env FILE IN OUR CODE
-dotenv.config()
 
 //HANDLES EVERY REQUEST 
 const HandleMessage = (ws, req)=>{
@@ -25,7 +23,7 @@ const HandleMessage = (ws, req)=>{
 
 
 const wss = new WebSocketServer({
-    host: process.env.HOST,
+    // host: process.env.HOST,
     port: process.env.PORT
 })
 console.log("THE SERVER IS UP AND RUNNING ON PORT "+process.env.PORT)
