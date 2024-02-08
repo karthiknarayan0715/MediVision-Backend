@@ -2,12 +2,13 @@ const {mongoose} = require("mongoose");
 
 const connectionsSchema = mongoose.Schema({
     name: String,
-    connectionId: String
+    connectionId: String,
+    isHost: Boolean
 })
 
 const roomSchema = mongoose.Schema({
     roomCode: String,
-    connections: [String]
+    connections: [connectionsSchema]
 })
 
 const Connection = mongoose.model('Connection', connectionsSchema)
