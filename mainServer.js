@@ -25,10 +25,9 @@ const HandleMessage = (ws, req)=>{
 
 
 const wss = new WebSocketServer({
-    // host: process.env.HOST,
-    port: process.env.PORT
+    port: process.env.MAIN_SERVER_PORT
 })
-console.log("THE SERVER IS UP AND RUNNING ON PORT "+process.env.PORT)
+console.log("THE MAIN SERVER IS UP AND RUNNING ON PORT "+process.env.MAIN_SERVER_PORT)
 
 
 wss.on('connection', async (ws, req)=>{

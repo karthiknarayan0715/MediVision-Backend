@@ -1,6 +1,5 @@
 const { GenerateRandomCode } = require("../helpers/RandomCode")
 const { Room, Connection } = require("../models/Models")
-const {createJWT} = require("../helpers/Jwt")
 
 const CreateRoom = async (ws, req)=>{
     try
@@ -11,8 +10,7 @@ const CreateRoom = async (ws, req)=>{
         await cur_connection.save()
         const new_room = new Room({roomCode: roomCode, connections: [cur_connection]})
         await new_room.save();
-        const token = await createJWT(ws.id);
-        ws.send(JSON.stringify({type: "room_creation_successful", roomCode: roomCode, room_data: new_room,jwt:token}))
+        ws.send(JSON.stringify({type: "room_creation_successful", roomCode: roomCode, room_data: new_room}))
     }
     catch (err)
     {
