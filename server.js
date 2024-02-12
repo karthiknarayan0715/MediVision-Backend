@@ -42,6 +42,7 @@ wss.on('connection', async (ws, req)=>{
         let new_connection = new Connection({
             name: ws.name,
             connectionId: ws.id,
+            pId: queryObject.pid
         }) 
         await new_connection.save()
         //TELLING THE CLIENT THE CONNECTION IS SUCCESSFUL
