@@ -3,7 +3,12 @@ const mongoose = require("mongoose")
 const app = express();
 const dotenv = require("dotenv")
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"]
+  }
+});
 dotenv.config()
 const port = process.env.STREAM_SERVER_PORT;
 
@@ -35,6 +40,6 @@ io.on("connection" , (socket)=>{
   })
 })
 
-server.listen(port , '0.0.0.0',()=>{
+server.listen(port ,()=>{
   console.log("Stream Server running on port : " + port);
 })
