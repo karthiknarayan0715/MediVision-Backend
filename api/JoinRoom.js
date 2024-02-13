@@ -13,7 +13,7 @@ const JoinRoom = async (ws, req)=>{
             await cur_connection.save()
             room.connections.push(cur_connection)
             await room.save()
-            await AlertRoom(room.roomCode, {type: "new_member", data: {name: ws.name},  room_data: room})
+            await AlertRoom(room.roomCode, {type: "new_member", data: {name: ws.name},  room_data: room, peerId: cur_connection.peerId})
             ws.send(JSON.stringify({type: "room_join_successful", roomCode: room.roomCode, room_data: room }))
         }   
     }

@@ -3,6 +3,7 @@ const {mongoose} = require("mongoose");
 const connectionsSchema = mongoose.Schema({
     name: String,
     connectionId: String,
+    peerId: String,
     isHost: Boolean
 })
 

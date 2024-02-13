@@ -36,12 +36,14 @@ wss.on('connection', async (ws, req)=>{
     let uuid = uuidv4();
     ws.id = uuid
     ws.name = queryObject.name
+    ws.peerId = queryObject.peerId
     Connections[uuid] = ws
 
     try{
         let new_connection = new Connection({
             name: ws.name,
             connectionId: ws.id,
+            peerId: ws.peerId
         }) 
         await new_connection.save()
         //TELLING THE CLIENT THE CONNECTION IS SUCCESSFUL
