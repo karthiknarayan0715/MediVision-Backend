@@ -11,6 +11,7 @@ dotenv.config()
 const EditName = require("./api/EditName.js").EditName
 const CreateRoom = require("./api/CreateRoom.js").CreateRoom
 const JoinRoom = require("./api/JoinRoom.js").JoinRoom
+const UpdateCanvas = require("./api/UpdateCanvas.js").UpdateCanvas
 
 mongoose.connect(process.env.DB_URI).then(()=>{
     console.log("Connected to MongoDB!")
@@ -32,7 +33,6 @@ console.log("THE MAIN SERVER IS UP AND RUNNING ON PORT "+process.env.MAIN_SERVER
 
 wss.on('connection', async (ws, req)=>{
     const queryObject = url.parse(req.url, true).query;
-    console.log(queryObject.name + " CONNECTED")
     let uuid = uuidv4();
     ws.id = uuid
     ws.name = queryObject.name
@@ -83,6 +83,5 @@ wss.on('connection', async (ws, req)=>{
         catch(err){
             console.error("ERROR: " + err)
         }
-        console.log(`${ws.name} DISCONNECTED | ${ws.id}`)
     })
 })
