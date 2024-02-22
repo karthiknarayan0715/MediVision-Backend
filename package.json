@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon mainServer.js",
+    "start": "node mainServer.js",
     "stream": "nodemon streamServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
