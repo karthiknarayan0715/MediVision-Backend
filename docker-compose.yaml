@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  medivision-backend:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - ${MAIN_SERVER_PORT}:${MAIN_SERVER_PORT}
+    depends_on:
+      - db
+    restart: always
+  medivision-db:
+    image: mongo
+    restart: always
