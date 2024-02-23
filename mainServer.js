@@ -12,6 +12,7 @@ const EditName = require("./api/EditName.js").EditName
 const CreateRoom = require("./api/CreateRoom.js").CreateRoom
 const JoinRoom = require("./api/JoinRoom.js").JoinRoom
 const UpdateCanvas = require("./api/UpdateCanvas.js").UpdateCanvas
+const ChatMessage = require("./api/ChatMessage.js").ChatMessage
 
 mongoose.connect(process.env.DB_URI).then(()=>{
     console.log("Connected to MongoDB!")
