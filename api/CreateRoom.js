@@ -8,7 +8,7 @@ const CreateRoom = async (ws, req)=>{
         const cur_connection = await Connection.findOne({connectionId: ws.id})
         cur_connection.isHost = true
         await cur_connection.save()
-        const new_room = new Room({roomCode: roomCode, connections: [cur_connection]})
+        const new_room = new Room({roomCode: roomCode, model: "Body", connections: [cur_connection]})
         await new_room.save();
         ws.send(JSON.stringify({type: "room_creation_successful", roomCode: roomCode, room_data: new_room}))
     }

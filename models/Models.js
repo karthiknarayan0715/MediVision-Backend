@@ -9,6 +9,7 @@ const connectionsSchema = mongoose.Schema({
 
 const roomSchema = mongoose.Schema({
     roomCode: String,
+    model: String,
     connections: [connectionsSchema]
 })
 
